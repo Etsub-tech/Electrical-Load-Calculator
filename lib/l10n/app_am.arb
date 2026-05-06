@@ -1,0 +1,16 @@
+{
+  "appTitle": "የኤሌክትሪክ ጭነት መቁጠሪያ",
+  "applianceName": "የመሳሪያ ስም",
+  "voltage": "ቮልቴጅ",
+  "current": "ካረንት",
+  "hours": "የቀን ሰዓት",
+  "rate": "ዋጋ በ kWh",
+  "calculate": "አስላ",
+  "clear": "አጥፋ",
+  "history": "ታሪክ",
+  "noHistory": "ምንም ውሂብ የለም",
+  "fieldRequired": "ይህ መስክ አስፈላጊ ነው",
+  "invalidNumber": "ትክክለኛ ቁጥር ያስገቡ",
+  "mustBePositive": "ከዜሮ በላይ መሆን አለበት",
+  "savedToHistory": "ወደ ታሪክ ተቀምጧል"
+}

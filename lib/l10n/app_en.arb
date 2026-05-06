@@ -1,0 +1,16 @@
+{
+  "appTitle": "Electrical Load Calculator",
+  "applianceName": "Appliance Name",
+  "voltage": "Voltage",
+  "current": "Current",
+  "hours": "Hours per Day",
+  "rate": "Cost per kWh",
+  "calculate": "Calculate",
+  "clear": "Clear",
+  "history": "History",
+  "noHistory": "No saved calculations yet",
+   "fieldRequired": "This field is required",
+  "invalidNumber": "Enter a valid number",
+  "mustBePositive": "Value must be greater than zero",
+  "savedToHistory": "Saved to history"
+}
