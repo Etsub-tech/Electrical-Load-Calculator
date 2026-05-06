@@ -20,4 +20,34 @@ class LoadRecord {
     required this.monthlyCost,
     required this.createdAt,
   });
+  
+  //Object to JSON
+  Map<String, dynamic> toJson() {
+return {
+'applianceName': applianceName,
+'voltage': voltage,
+'current': current,
+'power': power,
+'hoursPerDay': hoursPerDay,
+'dailyEnergy': dailyEnergy,
+'monthlyEnergy': monthlyEnergy,
+'monthlyCost': monthlyCost,
+'createdAt': createdAt.toIso8601String(),
+};
+}
+
+//JSON to object
+factory LoadRecord.fromJson(Map<String, dynamic> json) {
+return LoadRecord(
+applianceName: json['applianceName'],
+voltage: json['voltage'],
+current: json['current'],
+power: json['power'],
+hoursPerDay: json['hoursPerDay'],
+dailyEnergy: json['dailyEnergy'],
+monthlyEnergy: json['monthlyEnergy'],
+monthlyCost: json['monthlyCost'],
+createdAt: DateTime.parse(json['createdAt']),
+);
+}
 }
