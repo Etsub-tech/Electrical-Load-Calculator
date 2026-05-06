@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/load_record.dart';
 import '../services/storage_service.dart';
+import '../l10n/app_localizations.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -27,9 +28,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     return Scaffold(
+      backgroundColor: Colors.white,
+
       appBar: AppBar(
-        title: const Text('History'),
+        title: Text(loc.historyTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.delete),
@@ -37,6 +42,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ),
         ],
       ),
+
       body: FutureBuilder<List<LoadRecord>>(
         future: _historyFuture,
         builder: (context, snapshot) {
@@ -47,7 +53,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           final records = snapshot.data!;
 
           if (records.isEmpty) {
-            return const Center(child: Text('No history yet'));
+            return Center(child: Text(loc.noHistory));
           }
 
           return ListView.builder(
@@ -56,12 +62,14 @@ class _HistoryScreenState extends State<HistoryScreen> {
               final r = records[index];
 
               return Card(
+                color: Colors.white,
                 margin: const EdgeInsets.all(10),
                 child: ListTile(
                   title: Text(r.applianceName),
                   subtitle: Text(
-                      'Power: ${r.power.toStringAsFixed(2)} W\n'
-                      'Cost: ${r.monthlyCost.toStringAsFixed(2)}'),
+                    '${loc.power}: ${r.power.toStringAsFixed(2)} W\n'
+                    '${loc.cost}: ${r.monthlyCost.toStringAsFixed(2)}',
+                  ),
                 ),
               );
             },

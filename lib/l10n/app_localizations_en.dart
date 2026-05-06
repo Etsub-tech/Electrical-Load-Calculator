@@ -36,7 +36,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get history => 'History';
 
   @override
-  String get noHistory => 'No saved calculations yet';
+  String get noHistory => 'No history yet';
 
   @override
   String get fieldRequired => 'This field is required';
@@ -49,4 +49,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get savedToHistory => 'Saved to history';
+
+  @override
+  String get historyTitle => 'History';
+
+  @override
+  String get errorLoadingHistory => 'Error loading history';
+
+  @override
+  String get power => 'Power';
+
+  @override
+  String get cost => 'Cost';
+
+  @override
+  String get applianceHint => 'Example: Fan, Heater, Motor';
+
+  @override
+  String get voltageHint => 'Example: 230';
+
+  @override
+  String get currentHint => 'Example: 0.5';
+
+  @override
+  String get hoursHint => 'Example: 8';
+
+  @override
+  String get rateHint => 'Example: 0.12';
+
+  @override
+  String get dailyEnergy => 'Daily Energy';
+
+  @override
+  String get monthlyEnergy => 'Monthly Energy';
 }

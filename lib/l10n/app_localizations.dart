@@ -155,7 +155,7 @@ abstract class AppLocalizations {
   /// No description provided for @noHistory.
   ///
   /// In en, this message translates to:
-  /// **'No saved calculations yet'**
+  /// **'No history yet'**
   String get noHistory;
 
   /// No description provided for @fieldRequired.
@@ -181,6 +181,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved to history'**
   String get savedToHistory;
+
+  /// No description provided for @historyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get historyTitle;
+
+  /// No description provided for @errorLoadingHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading history'**
+  String get errorLoadingHistory;
+
+  /// No description provided for @power.
+  ///
+  /// In en, this message translates to:
+  /// **'Power'**
+  String get power;
+
+  /// No description provided for @cost.
+  ///
+  /// In en, this message translates to:
+  /// **'Cost'**
+  String get cost;
+
+  /// No description provided for @applianceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Example: Fan, Heater, Motor'**
+  String get applianceHint;
+
+  /// No description provided for @voltageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Example: 230'**
+  String get voltageHint;
+
+  /// No description provided for @currentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Example: 0.5'**
+  String get currentHint;
+
+  /// No description provided for @hoursHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Example: 8'**
+  String get hoursHint;
+
+  /// No description provided for @rateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Example: 0.12'**
+  String get rateHint;
+
+  /// No description provided for @dailyEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Energy'**
+  String get dailyEnergy;
+
+  /// No description provided for @monthlyEnergy.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly Energy'**
+  String get monthlyEnergy;
 }
 
 class _AppLocalizationsDelegate

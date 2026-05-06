@@ -36,7 +36,7 @@ class AppLocalizationsAm extends AppLocalizations {
   String get history => 'ታሪክ';
 
   @override
-  String get noHistory => 'ምንም ውሂብ የለም';
+  String get noHistory => 'ምንም ታሪክ የለም';
 
   @override
   String get fieldRequired => 'ይህ መስክ አስፈላጊ ነው';
@@ -49,4 +49,37 @@ class AppLocalizationsAm extends AppLocalizations {
 
   @override
   String get savedToHistory => 'ወደ ታሪክ ተቀምጧል';
+
+  @override
+  String get historyTitle => 'ታሪክ';
+
+  @override
+  String get errorLoadingHistory => 'ታሪክ ሲጫን ስህተት ተፈጥሯል';
+
+  @override
+  String get power => 'ኃይል';
+
+  @override
+  String get cost => 'ዋጋ';
+
+  @override
+  String get applianceHint => 'ምሳሌ: ፋን, ማሞቂያ, ሞተር';
+
+  @override
+  String get voltageHint => 'ምሳሌ: 230';
+
+  @override
+  String get currentHint => 'ምሳሌ: 0.5';
+
+  @override
+  String get hoursHint => 'ምሳሌ: 8';
+
+  @override
+  String get rateHint => 'ምሳሌ: 0.12';
+
+  @override
+  String get dailyEnergy => 'ዕለታዊ ኃይል';
+
+  @override
+  String get monthlyEnergy => 'ወርሃዊ ኃይል';
 }

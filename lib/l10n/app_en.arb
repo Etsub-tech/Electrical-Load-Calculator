@@ -9,8 +9,20 @@
   "clear": "Clear",
   "history": "History",
   "noHistory": "No saved calculations yet",
-   "fieldRequired": "This field is required",
+  "fieldRequired": "This field is required",
   "invalidNumber": "Enter a valid number",
   "mustBePositive": "Value must be greater than zero",
-  "savedToHistory": "Saved to history"
+  "savedToHistory": "Saved to history",
+  "historyTitle": "History",
+  "noHistory": "No history yet",
+  "errorLoadingHistory": "Error loading history",
+  "power": "Power",
+  "cost": "Cost",
+  "applianceHint": "Example: Fan, Heater, Motor",
+  "voltageHint": "Example: 230",
+  "currentHint": "Example: 0.5",
+  "hoursHint": "Example: 8",
+  "rateHint": "Example: 0.12",
+   "dailyEnergy": "Daily Energy",
+  "monthlyEnergy": "Monthly Energy"
 }

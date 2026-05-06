@@ -12,5 +12,21 @@
   "fieldRequired": "ይህ መስክ አስፈላጊ ነው",
   "invalidNumber": "ትክክለኛ ቁጥር ያስገቡ",
   "mustBePositive": "ከዜሮ በላይ መሆን አለበት",
-  "savedToHistory": "ወደ ታሪክ ተቀምጧል"
+  "savedToHistory": "ወደ ታሪክ ተቀምጧል",
+  "historyTitle": "ታሪክ",
+  "noHistory": "ምንም ታሪክ የለም",
+  "errorLoadingHistory": "ታሪክ ሲጫን ስህተት ተፈጥሯል",
+  "power": "ኃይል",
+  "cost": "ዋጋ",
+  "applianceHint": "ምሳሌ: ፋን, ማሞቂያ, ሞተር",
+  "voltageHint": "ምሳሌ: 230",
+  "currentHint": "ምሳሌ: 0.5",
+  "hoursHint": "ምሳሌ: 8",
+  "rateHint": "ምሳሌ: 0.12",
+  "power": "ኃይል",
+  "dailyEnergy": "ዕለታዊ ኃይል",
+  "monthlyEnergy": "ወርሃዊ ኃይል",
+  "cost": "ዋጋ",
+  "dailyEnergy": "ዕለታዊ ኃይል",
+  "monthlyEnergy": "ወርሃዊ ኃይል"
 }

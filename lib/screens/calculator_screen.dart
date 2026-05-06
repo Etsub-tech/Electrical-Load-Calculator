@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../l10n/app_localizations.dart';
 import '../models/load_record.dart';
 import '../services/load_calculator_service.dart';
 import '../services/storage_service.dart';
+import '../l10n/app_localizations.dart';
 import '../widgets/result_card.dart';
 import 'history_screen.dart';
 
@@ -39,11 +39,71 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     super.dispose();
   }
 
-  Future<void> _calculateLoad() async {
-    if (!_formKey.currentState!.validate()) return;
+  @override
+  Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
 
+    return Scaffold(
+      backgroundColor: Colors.white,
+
+      appBar: AppBar(
+        title: Text(loc.appTitle),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.history),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const HistoryScreen()),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.language),
+            onPressed: widget.onToggleLanguage,
+          ),
+        ],
+      ),
+
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(
+              controller: _applianceController,
+              decoration: InputDecoration(labelText: loc.applianceName),
+            ),
+            TextField(
+              controller: _voltageController,
+              decoration: InputDecoration(labelText: loc.voltage),
+              keyboardType: TextInputType.number,
+            ),
+            TextField(
+              controller: _currentController,
+              decoration: InputDecoration(labelText: loc.current),
+              keyboardType: TextInputType.number,
+            ),
+            TextField(
+              controller: _hoursController,
+              decoration: InputDecoration(labelText: loc.hours),
+              keyboardType: TextInputType.number,
+            ),
+            TextField(
+              controller: _rateController,
+              decoration: InputDecoration(labelText: loc.rate),
+              keyboardType: TextInputType.number,
+            ),
+
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+  style: ElevatedButton.styleFrom(
+    backgroundColor: const Color.fromARGB(255, 130, 25, 7), // burgundy
+    foregroundColor: Colors.white, // 👈 THIS changes text + icon color
+  ),
+  onPressed: () async {
     final result = LoadCalculatorService.calculate(
-      applianceName: _applianceController.text.trim(),
+      applianceName: _applianceController.text,
       voltage: double.parse(_voltageController.text),
       current: double.parse(_currentController.text),
       hoursPerDay: double.parse(_hoursController.text),
@@ -55,186 +115,12 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     setState(() {
       _record = result;
     });
+  },
+  child: Text(loc.calculate),
+),
 
-    if (!mounted) return;
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(AppLocalizations.of(context)!.savedToHistory),
-      ),
-    );
-  }
-
-  void _clearForm() {
-    _applianceController.clear();
-    _voltageController.clear();
-    _currentController.clear();
-    _hoursController.clear();
-    _rateController.clear();
-
-    setState(() {
-      _record = null;
-    });
-  }
-
-  String? _validateText(String? value) {
-    final loc = AppLocalizations.of(context)!;
-
-    if (value == null || value.trim().isEmpty) {
-      return loc.fieldRequired;
-    }
-    return null;
-  }
-
-  String? _validateNumber(String? value) {
-    final loc = AppLocalizations.of(context)!;
-
-    if (value == null || value.trim().isEmpty) {
-      return loc.fieldRequired;
-    }
-
-    final number = double.tryParse(value);
-
-    if (number == null) {
-      return loc.invalidNumber;
-    }
-
-    if (number <= 0) {
-      return loc.mustBePositive;
-    }
-
-    return null;
-  }
-
-  Widget _buildNumberField({
-    required TextEditingController controller,
-    required String label,
-    required String hint,
-    required IconData icon,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
-      child: TextFormField(
-        controller: controller,
-        validator: _validateNumber,
-        keyboardType: TextInputType.number,
-        decoration: InputDecoration(
-          labelText: label,
-          hintText: hint,
-          prefixIcon: Icon(icon),
-          border: const OutlineInputBorder(),
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(loc.appTitle),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.history),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const HistoryScreen(),
-                ),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.language),
-            onPressed: widget.onToggleLanguage,
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              // Appliance name
-              TextFormField(
-                controller: _applianceController,
-                validator: _validateText,
-                decoration: InputDecoration(
-                  labelText: loc.applianceName,
-                  hintText: 'Example: Fan, Heater, Motor',
-                  prefixIcon: const Icon(Icons.electrical_services),
-                  border: const OutlineInputBorder(),
-                ),
-              ),
-
-              const SizedBox(height: 14),
-
-              // Voltage
-              _buildNumberField(
-                controller: _voltageController,
-                label: loc.voltage,
-                hint: 'Example: 230',
-                icon: Icons.bolt,
-              ),
-
-              // Current
-              _buildNumberField(
-                controller: _currentController,
-                label: loc.current,
-                hint: 'Example: 0.5',
-                icon: Icons.power,
-              ),
-
-              // Hours
-              _buildNumberField(
-                controller: _hoursController,
-                label: loc.hours,
-                hint: 'Example: 8',
-                icon: Icons.timer,
-              ),
-
-              // Rate
-              _buildNumberField(
-                controller: _rateController,
-                label: loc.rate,
-                hint: 'Example: 0.12',
-                icon: Icons.attach_money,
-              ),
-
-              const SizedBox(height: 10),
-
-              // Buttons
-              Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton.icon(
-                      onPressed: _calculateLoad,
-                      icon: const Icon(Icons.calculate),
-                      label: Text(loc.calculate),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: OutlinedButton.icon(
-                      onPressed: _clearForm,
-                      icon: const Icon(Icons.clear),
-                      label: Text(loc.clear),
-                    ),
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 16),
-
-              // Result
-              if (_record != null) ResultCard(record: _record!),
-            ],
-          ),
+            if (_record != null) ResultCard(record: _record!),
+          ],
         ),
       ),
     );

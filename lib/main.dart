@@ -44,6 +44,22 @@ class _ElectricalLoadAppState extends State<ElectricalLoadApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
 
+      theme: ThemeData(
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: Colors.white,
+
+        colorScheme: const ColorScheme.light(
+          primary: Color(0xFF800020), // burgundy
+          secondary: Color(0xFFB11226),
+        ),
+
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          elevation: 0,
+        ),
+      ),
+
       home: CalculatorScreen(
         onToggleLanguage: toggleLanguage,
       ),
